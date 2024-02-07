@@ -17,8 +17,8 @@ export default function Quiz() {
   const handleSelectAnswer = useCallback(
     function handleSelectAnswer(selectedAnswer) {
       setAnswerState('answered');
-      setUserAnswers((prevUserAnswers) => {
-        return [...prevUserAnswers, selectedAnswer];
+      setUserAnswers((prevUserAnswer) => {
+        return [...prevUserAnswer, selectedAnswer];
       });
 
       setTimeout(() => {
