@@ -1,11 +1,10 @@
-import { useState, useCallback, useRef } from 'react';
+import { useState, useCallback } from 'react';
 import QUESTIONS from '../questions';
 import QuestionTimer from './QuestionTimer';
 import Answers from './Answers.jsx';
 import quizCompleteImg from '../assets/quiz-complete.png';
 
 export default function Quiz() {
-  const shuffledAnswers = useRef();
   const [answerState, setAnswerState] = useState('');
   const [userAnswers, setUserAnswers] = useState([]);
 
@@ -60,9 +59,11 @@ export default function Quiz() {
         />
         <h2>{QUESTIONS[activeQuestionIndex].text}</h2>
         <Answers
+          key={activeQuestionIndex}
           answers={QUESTIONS[activeQuestionIndex].answers}
           selectedAnswer={userAnswers[userAnswers.length - 1]}
-          answersState={answerState}
+          answerState={answerState}
+          onSelect={handleSelectAnswer}
         />
       </div>
     </div>

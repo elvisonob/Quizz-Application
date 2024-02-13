@@ -1,7 +1,7 @@
 export default [
   {
     id: 'q1',
-    text: 'Which of the following definition best describes React.js?',
+    text: 'Which of the following definitions best describes React.js?',
     answers: [
       'A library to build user interfaces with help of declarative code.',
       'A library for managing state in web applications.',
