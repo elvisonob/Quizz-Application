@@ -1,18 +1,32 @@
-export default function Question() {
-  return;
-  <div id="question">
-    <QuestionTimer
-      key={activeQuestionIndex}
-      timeout={10000}
-      onTimeout={handleSkipAnswer}
-    />
-    <h2>{QUESTIONS[activeQuestionIndex].text}</h2>
-    <Answers
-      key={activeQuestionIndex}
-      answers={QUESTIONS[activeQuestionIndex].answers}
-      selectedAnswer={userAnswers[userAnswers.length - 1]}
-      answerState={answerState}
-      onSelect={handleSelectAnswer}
-    />
-  </div>;
+import { useState } from 'react';
+import QuestionTimer from './QuestionTimer.jsx';
+import Answers from './Answers.jsx';
+
+export default function Question({
+  questionText,
+  answers,
+  onSelectAnswer,
+  selectedAnswer,
+  answerState,
+  onSkipAnswer,
+}) {
+  const [answer, setAnswer] = useState({
+    selectedAnswer: '',
+    isCorrect: null,
+  });
+
+  function handleSelectAnswer(answer) {}
+
+  return (
+    <div id="question">
+      <QuestionTimer timeout={10000} onTimeout={onSkipAnswer} />
+      <h2>{questionText}</h2>
+      <Answers
+        answers={answers}
+        selectedAnswer={selectedAnswer}
+        answerState={answerState}
+        onSelect={onSelectAnswer}
+      />
+    </div>
+  );
 }
